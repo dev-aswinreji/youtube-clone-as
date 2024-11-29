@@ -8,9 +8,12 @@ function App() {
 
   return (
     <Provider store={store}>   
-      <div className="flex">
+      <div className="App">
     <Head/>
+    <div className="mt-[64px]">
     <Body/>
+    </div>
+    
    </div>
    </Provider>
 

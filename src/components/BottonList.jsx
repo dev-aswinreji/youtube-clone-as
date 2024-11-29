@@ -1,11 +1,19 @@
-import React from 'react'
+import React from 'react';
+import Botton from './Botton';
 
 const BottonList = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  const buttons = [
+    'All', 'Music', 'Sports', 'Gaming', 'News', 'Movies', 'Fashion', 'Live',
+    'Tech', 'Education', 'Health', 'Fitness', 'Travel', 'Cooking',
+  ];
 
-export default BottonList
+  return (
+    <div className="flex flex-wrap justify-start items-start p-10">
+      {buttons.map((name, index) => (
+        <Botton key={index} name={name} />
+      ))}
+    </div>
+  );
+};
+
+export default BottonList;
