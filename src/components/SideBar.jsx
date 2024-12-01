@@ -8,7 +8,7 @@ const SideBar = () => {
   if (!isMenuOpen) return null;
 
   return (
-    <div className="w-60 h-screen m-2 flex flex-col bg-gray-50 bg-opacity-90 shadow-md fixed top-0 left-0 z-20">
+    <div className="w-60 h-screen  flex flex-col bg-gray-50 bg-opacity-90 shadow-md fixed top-0 left-0 z-20">
       {/* Sidebar Header */}
       <div className="p-6  flex items-center  sticky top-0 z-30">
         <img
