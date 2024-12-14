@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { HAMBURGEN_ICON, USER_ICON, YOUTUBE_ICON } from '../utils/ImageIcons';
 import { MagnifyingGlassIcon } from '@heroicons/react/16/solid';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '../utils/AppSlice';
 import { YOUTUBE_SEARCH_API } from '../utils/ApiContants';
+import { cacheResult } from '../utils/SerachSlice';
+
 
 const Head = () => {
   
@@ -11,8 +13,16 @@ const Head = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
+  const searchCache = useSelector((store)=>store.search);
+
   useEffect(()=>{
-    const timer = setTimeout(()=>getSearchSuggetion(),200)
+    const timer = setTimeout(()=>{
+      if(searchCache[searchQuery]){
+        setSuggestions(searchCache[searchQuery])
+      }else{
+        getSearchSuggetion()
+      }
+    },200)
     return()=>{
       clearTimeout(timer)
     }
@@ -23,6 +33,10 @@ const Head = () => {
     const json = await data.json()
     setSuggestions(json[1]);
     setShowSuggestions(true);
+    
+    dispatch(cacheResult({
+      [searchQuery]: json[1]
+    }));
   }
 
     const dispatch=useDispatch()
