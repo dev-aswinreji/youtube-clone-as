@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const VideoContainer = () => {
   const [video, setVideo] = useState([])
+console.log(import.meta.env.VITE_GOOGLE_API);
 
   useEffect(() => {
     getVideos();
@@ -14,11 +15,12 @@ const VideoContainer = () => {
   const getVideos = async () => {
     const data = await fetch(YOUTUBE_VIDEOAPI)
     const Json = await data.json()
-    console.log(Json,'data is here');
+    console.log(Json, 'data is here');
 
     setVideo(Json.items)
 
   }
+
   return (
     <div className='flex flex-wrap justify-center gap-4 p-2'>
       {video.map((video) => (

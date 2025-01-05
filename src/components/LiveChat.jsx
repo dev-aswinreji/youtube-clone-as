@@ -29,7 +29,7 @@ const LiveChat = () => {
         <form className="w-[520px] p-2 ml-2 border boreder-black rounded-lg" onSubmit={(e)=>{
             e.preventDefault()
             dispatch(addMessege({
-                name:"Arshad",
+                name:"Aswin",
                 messege:liveMessege,
             }))
             setLiveMessege("")
